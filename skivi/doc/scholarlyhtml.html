@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes">
+    <title>Scholarly HTML</title>
+    <link rel="stylesheet" href="../css/documentationstyle.css">
+</head>
+
+<body>
+    <header>
+        <div class="banner">
+            <h1>SkiVI Documentatie</h1>
+        </div>
+    </header>
+    <div role="contentinfo">
+
+        <section typeof="sa:ProjectLinks">
+            <ul>
+                <li typeof="schema:WebPage" 
+                    resource="https://github.com/DamianTeodora/TWProiect-Skill-Development" property="schema:citation"
+                    id="github">
+                    <cite property="schema:name">
+                        <a href="https://github.com/DamianTeodora/TWProiect-Skill-Development">Github</a>
+                    </cite>
+                </li>
+            </ul>
+
+
+
+            <h2>Cuprins</h2>
+            <ol role="directory">
+                <li>
+                    <a href="#introducere">
+                        Introducere
+                    </a>
+
+                    <ol role="directory">
+                        <li>
+                            <a href="#scop">
+                                Scop
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#conventi">
+                                Convențiile documentelor
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#public">
+                                Publicul destinat și sugestiile de lectură
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#domeniu">
+                                Domeniul de aplicare al produsului
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#referinte">
+                                Referințe
+                            </a>
+                        </li>
+                    </ol>
+                
+            </li>
+                <li>
+                    <a href="#structure">
+                        Descriere generală - Structura
+                    </a>
+
+                    <ol role="directory">
+
+                        <li>
+                            <a href="#perspectiva">
+                                Perspectiva produsului
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#functii">
+                                Funcțiile produsului
+                            </a>
+                        </li>
+                    </ol>
+                </li>
+
+                <li>
+                    <a href="#front-end">
+                        Front-End
+                    </a>
+
+                    <ol role="directory">
+                        <li>
+                            <a href="#loginfront">
+                                Login
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#signupfront">
+                                Sign-Up
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#logoutfront">
+                                Logout
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#usernav">
+                                Meniul de navigare a utilizatorului
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#homepage">
+                                Homepage
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#campaniifront">
+                                Skill-uri
+                            </a>
+
+                            <ol role="directory">
+                                <li>
+                                    <a href="#initiere-machiaj">
+                                        Initiere in artele machiajului, imbracatului si cuafatului pentru o anumita
+                                        perioada
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#initiere-cook">
+                                        Initierea in artele culinare
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#initiere-prim-ajutor">
+                                        Initiere in prim ajutor
+                                    </a>
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <a href="#pagina-profil">
+                                Pagina de profil
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#pagina-setari">
+                                Pagina de setari
+                            </a>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="#references">
+                        Referinte
+                    </a>
+                </li>
+                </ol>
+        </section>
+
+        <section typeof="sa:AuthorsList">
+            <h2>Autori</h2>
+            <ul>
+                <li typeof="sa:ContributorRole" property="schema:author">
+                    <span typeof="schema:Person">
+                        <meta property="schema:givenName" content="Teodora">
+                        <meta property="schema:familyName" content="Damian">
+                        <span property="schema:name">Teodora Damian</span>
+                    </span>
+                    <ul>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            <a href="teodoradamian811@gmail.com" property="schema:email">teodoradamian811@gmail.com</a>
+                        </li>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            <a href="https://github.com/DamianTeodora"
+                                property="schema:github">https://github.com/DamianTeodora</a>
+                        </li>
+                    </ul>
+                </li>
+                <li typeof="sa:ContributorRole" property="schema:author">
+                    <span typeof="schema:Person">
+                        <meta property="schema:givenName" content="Elena">
+                        <meta property="schema:additionalName" content="Stefania">
+                        <meta property="schema:familyName" content="Straton">
+                        <span property="schema:name">Elena-Stefania Straton</span>
+                    </span>
+                    <ul>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            <a href="elena.straton23@gmail.com" property="schema:email">elena.straton23@gmail.com</a>
+                        </li>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            <a href="https://github.com/Straton-Elena-Stefania"
+                                property="schema:github">https://github.com/Straton-Elena-Stefania</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </section>
+    </div>
+    <section id="introduction" role="doc-introduction">
+        <h2>
+            <span>1.</span>
+            Introducere
+        </h2>
+        <p>
+            Proiectul SkiVI este menit sa fie o platforma educationala si vocationala
+            ce pune la dispozitia utilizatorilor logati forme diferite de media pentru
+            a-i ajuta sa invete niste deprinderi, in functie de preferintele fiecarui
+            utilizator in parte. Oferim deci utilizatorului control deplin asupra continutului
+            pe care il va consuma.
+        </p>
+        <p>
+            Platforma are in vedere:
+        </p>
+        <ul>
+            <li>
+                Promovarea unui stil organizat de a-ti gestiona activitatile.
+            </li>
+            <li>
+                O interfata prietenoasa, intuitiva, in culori vii.
+            </li>
+            <li>
+                Tehnologie open-source.
+            </li>
+            <li>
+                Modularizarea: deprinderile nu depind una de alta.
+            </li>
+            <li>
+                Arhitectura bazata pe microservices.
+            </li>
+        </ul>
+    </section>
+    <section id="structure">
+        <h2>
+            <span>2.</span>
+            Descriere generală - Structura
+        </h2>
+        <section id="perspectiva">
+            <h3>
+                <span>2.1</span>
+                Perspectiva produsului
+            </h3>
+            <p>Perspectiva site-ului vizeaza continut procurat din surse
+                profesionale, prezentate intr-o maniera accesibila unui
+                public larg de toate varstele si toate sexele.
+            </p>
+        </section>
+        <section id="functii">
+            <h3>
+                <span>2.2</span>
+                Functiile produsului
+            </h3>
+            <figure typeof="sa:image">
+                <img src="../resources/images/documentation/skiviusecase.png">
+                <figcaption>Use case diagram for the project</figcaption>
+            </figure>
+            <p>Un utilizator poate sa:</p>
+            <ul>
+                <li>
+                    Se logheze sau sa se inregistreze in aplicatie.
+                </li>
+                <li>
+                    Sa inceapa invatarea unui skill nou
+                    din cele adaugate in preferinte sau sa continue
+                    progresul cu un skill deja inceput.
+                </li>
+                <li>
+                    Sa isi gestioneze datele personale: nume, email, parola etc.
+                </li>
+                <li>
+                    Sa isi organizeze homepage-ul cu skill-uri.
+                </li>
+                <li>
+                    Sa urmeze tutorialele puse la dispozitie.
+                </li>
+                <li>
+                    Sa fie redirectionat catre resursele necesare pentru
+                    a continua intr-un tutorial.
+                </li>
+            </ul>
+            <p>
+            </p>
+        </section>
+    </section>
+    <section id="front-end">
+        <h2>
+            <span>3.</span>
+            Front-end
+        </h2>
+        <section id="loginfront">
+            <h3>
+                <span>3.1</span>
+                Login
+            </h3>
+            <p>Atunci cand un utilizator acceseaza site-ul pentru prima oara,
+                acesta este intampinat de pagina de login. Pe pagina de login
+                exista un design dreptiunghiular in care utilizatorul isi poate
+                introduce credentialele.
+            </p>
+            <p>
+                Oferim utilizatorului disponibilitatea de a isi recupera parola
+                in cazul in care a uitat-o. (parte de backend)
+            </p>
+            <p>
+                Pentru accesibilitate, oferim un eye button care, atunci cand este apasat,
+                sa suprascrie input-ul ascuns by default al campului <code>input type="password"</code>
+                cu caracterele pe care utilizatorul le introduce. Atunci cand este apasat din nou,
+                campul <code>input type="password"</code> va reveni la forma sa initiala cu caractere
+                ascunse.
+            </p>
+            <p>
+                In josul paginii regasim un toggle pentru un <code>aside</code> al carui rol
+                este de a oferi informatii despre motivatia din spatele SkiVI.
+                Atunci cand acest buton este apasat, ecranul este injumatatit iar cutia cu
+                formularul de login este mutat corespunzator, avand responsivitatea ca si scop.
+            </p>
+            <p>
+                In cazul in care utilizatorul nu are cont, ii oferim posibilitatea de a se inregistra
+                apasand pe butonul ce indeamna utilizatorul sa il apese daca nu are un cont:
+                <code>
+                    <a id="registerTrigger" href="javascript:void(0)" onclick="toggleRegisterWindow()">
+                      No account? Click here!
+                    </a>
+                </code>
+            <figure typeof="schema:SoftwareSourceCode">
+                <pre>
+                        <code>
+                            &lt;a id="registerTrigger" href="javascript:void(0)" onclick="toggleRegisterWindow()">
+                                No account? Click here!
+                            &lt;/a>
+                              function toggleLoginWindow() {
+                                const old = document.getElementById("registerForm");
+                                const newdiv = document.getElementById("localSignIn");
+                            
+                                old.style.display = "none";
+                                newdiv.style.display = "flex";
+                                ...
+                              }
+                        </code>
+                    </pre>
+
+                <figcaption>Toggle pentru a schimba catre fereastra de inregistrare</figcaption>
+            </figure>
+            
+            <section id="signupfront">
+                <h3>
+                    <span>3.2</span>
+                    Sign-Up
+                </h3>
+                <p>
+                    Fereastra de inregistrare observam ca este pe aceeasi pagina cu cea de login,
+                    existand o tranzitie intre cele doua ferestre. Astfel sunt redusi timpii
+                    de asteptare si oferim un design mai dinamic paginii.
+                </p>
+                <p>
+                    Pentru formularul de inregistrare este implementata validarea inputului pe
+                    partea de client, astfel:
+                </p>
+                <ol>
+                    <li>Numele de utilizator are voie sa contina doar caractere alfanumerice.</li>
+                    <li>Emailul trebuie sa aiba acel format binecunoscut de email.</li>
+                    <li>Parola are o limita inferioara si una superioara de caractere, si de asemenea nu poate contine
+                        unele caractere.</li>
+                </ol>
+                <p>De asemenea, obligam ca aceste campuri sa nu fie goale.</p>
+                <figure typeof="schema:SoftwareSourceCode">
+                    <pre>
+                        <code>
+                            /**
+                             * O expresie regulata ce descrie caractere exclusiv alfanumerice.
+                             */
+                            const usernameRegex = /^[a-zA-Z0-9]+$/;
+                            
+                            username.addEventListener('input', function (event) {
+                                /**
+                                 * De fiecare data cand utilizatorul scrie ceva,
+                                 * noi validam acel input
+                                 */
+                                if (!username.validity.valid) {
+                                    showUsernameError();
+                                } else {
+                                    if (usernameRegex.test(username.value) == false) {
+                                        showUsernameError();
+                                    } else {
+                                        /**
+                                         * Resetam, in cazul in care nu avem nicio eroare,
+                                         * elementul ce descrie mesajul de eroare pentru a-l
+                                         * ascunde.
+                                         */
+                                        usernameError.textContent = ''; 
+                                        usernameError.className = 'error'; 
+                                    }
+                                }
+                            });
+                        </code>
+                    </pre>
+                    <figcaption>Validarea inputului pentru username.</figcaption>
+                </figure>
+
+            </section>
+            <section id="logoutfront">
+                <h3>
+                    <span>
+                        3.3
+                    </span>
+                    Logout
+                </h3>
+                <p>Aceasta utilitate este servita in cadrul meniului de navigare a utilizatorului.
+                </p>
+            </section>
+            <section id="usernav">
+                <h3>
+                    <span>
+                        3.4
+                    </span>
+                    Meniul de navigare al utilizatorului
+                </h3>
+                <p>Pentru a accesa meniul de navigare al utilizatorului, efectuam un click pe poza
+                    de profil a utilizatorului, ce apare in partea din stanga sus a ecranului
+                    pe toata durata sesiunii.
+                </p>
+                <p>
+                    Acest meniu contine:
+                </p>
+                <ol>
+                    <li>
+                        Numele utilizatorului. Acest element este, desi redundant, facut pentru a fi de asemenea
+                        un link catre pagina de profil din motive de user experience (rapiditate de a ajunge
+                        la pagina de profil).
+                    </li>
+                    <li>
+                        Un link explicit catre pagina de profil a utilizatorului. Acest element are
+                        rolul de a informa efectiv utilizatorul de existenta paginii de profil.
+                    </li>
+                    <li>
+                        Un link catre pagina de setari.
+                    </li>
+                    <li>
+                        Utilitatea de delogare.
+                    </li>
+                </ol>
+                <figure typeof="sa:image">
+                    <img src="../resources/images/documentation/dropdown.png"> 
+                    <figcaption>Meniul de navigare a
+                    utilizatorului.</figcaption>
+                </figure>
+            </section>
+            <section id="homepage">
+                <h3>
+                    <span>
+                        3.5
+                    </span>
+                    Homepage
+                </h3>
+                <p>
+                    Aceasta pagina afiseaza catre utilizator skill-urile la care s-a inscris.
+                    Un skill este prezentat printr-o imagine cu rol de preview al skill-ului respectiv,
+                    intr-o rama minimalista.
+                </p>
+                <p>
+                    Pentru a afla date despre skill-ul showcased din imagine, utilizatorul trebuie sa dea
+                    click pe acea imagine.
+                </p>
+                <p>
+                    Atunci cand dam click pe imagine, este afisata o fereastra modala, ce ofera
+                    o introducere captivanta a skill-ului.
+                    De asemenea, este oferita optiunea de a configura skill-ul: de a invata, daca
+                    utilizatorul prefera, doar o subsectiune a acestuia:
+                </p>
+                <figure typeof="sa:image">
+                    <img src="../resources/images/documentation/modal.png"
+                        alt="Modal window displaying dark blurred background and description of skill">
+                    <figcaption>Modal window displaying dark blurred background and description of skill</figcaption>
+                </figure>
+                <p>
+                    Aceste ferestre modale au fost implementate prin JavaScript, utilizandu-ne de
+                    cate un <code>#id</code> cu rol de toggle pentru fiecare fereastra in parte.
+                    Desigur, stilurile ferestrelor pot fi reutilizate, aceste stiluri fiind encapsulate
+                    in elementul cu id-ul de toggle.
+                </p>
+                <p>
+                    Am vizat ca si design-ul ferestrei modele sa fie responsive.
+                </p>
+                <p>
+                    Utilizatorul mai poate interactiona cu skill-urile avand posibilitatea
+                    de a si le gestiona din homepage, pentru a avea o experienta mai placuta si mai
+                    organizata.
+                </p>
+                <p>
+                    Apasand butonul din dreapta sus, vom afisa o fereastra modala, de aceasta data
+                    avand rolul de warning. Aici utilizatorul are posibilitatea de a sterge din
+                    preferintele sale aces skill. Mesajul de eroare este unul explicit ce
+                    pune la cunostinta utilizatorul de consecinta actiunilor sale.
+                </p>
+                <p>
+                    Apasand butonul din stanga sus, este pornita o animatie cu un text plutitor, cu scopul de a
+                    informa utilizatorul ca a adaugat un nou skill la skil-urile sale preferate.
+                </p>
+            </section>
+            <section id="#campaniifront">
+                <h3>
+                    <span>
+                        3.6
+                    </span>
+                    Skill-uri
+                </h3>
+                <section id="time-traveling">
+                    <h4>
+                        <span>3.6.1</span>
+                        Initiere in artele machiajului, imbracatului si coafatului pentru o anumita perioada
+                    </h4>
+                    <p>
+                        Aceasta deprindere pe care noi ne dorim ca utilizatorul sa o invete este de fapt un
+                        microserviciu.
+                        Noi updatam constant aceste microservici ca sa fie cat se poate de noi si de actuale. Acesta
+                        este bazat
+                        pe articole si poze care te invata cum sa te machiezi, cum sa te imbraci si respectiv cum sa iti
+                        faci parul pentru
+                        o anumita prioada. Lucrul acesta mai poate fi numit si calatorie in timp prin intermediul
+                        aspectului tau.
+                        Publicul nostru este reprezentat in general de persoane curajoase si indraznete ce doresc sa
+                        incerce si altceva.
+                        Utilizatori nostri pot beneficia de un avantaje precum "moda revine", precum zice acest proverb.
+                        Aceste articole sunt constituite pe pasi, mai exact sunt mini tutoriale. Pagina si listele de
+                        produse care sunt afisate
+                        sunt responsive.
+                    </p>
+                    <p>
+                        Acest skill este impartit pe 3 mari perioade, mai exact anii 1920, 1950, 1970.
+
+                    </p>
+                </section>
+
+                <section id="initiere-cook">
+                    <h4>
+                        <span>3.6.2</span>
+                        Initiere in artelele culinare
+                    </h4>
+                    <p> Aceast skill reprezinta un microserviciu pe care noi il
+                        cream si il updatam constant. Aceste microservici pe care noi le folosim
+                        au rolul de a introduce utilizatorul in deprinderile de baza ale artelor culinare.
+                        Acest microserviciu are 2 ramuri, mai exact ramura pentru incepatori cu
+                        toate regulile necesare si ramura care este legata de retete.
+                    </p>
+                    <p>
+                        Acest skill este scris in forma de articol care contine scris, poze si
+                        videoclipuri. La finalul acestui microserviciu regasim un mini-test care
+                        verifica toate deprinderile pe care le-ai invatat pana ain momentul actual.
+                        Acest microserviciu interactiuneaza cu clientul printr-o lista de produse, acea lista
+                        are si anumite butoane care te duc pe link-ul de cumparare sau pe tutorialul aferent pozei.
+
+
+                    </p>
+                </section>
+
+                <section id="initiere-prim-ajutor">
+                    <h4>
+                        <span>3.6.3</span>
+                        Initiere in prim ajutor
+                    </h4>
+                    <p> Acest skill reprezinta un microserviciu format dintr-o pagina de html,
+                        care include articole, videoclipuri si poze sugestive si colorate care includ intr-un mod
+                        armonios
+                        tot ceea ce tine de skill-urile pe care noi dorim ca utilizatorul sa le poata invata cu placere
+                        si cu daruinta fata de viata. Aceste metode prin care noi incercam sa invatam utilizatorul
+                        sunt metode de memorare vizuala si auditiva. Am optat pentru acesta modalitate de invatare,
+                        deoarece
+                        majoritatea oamenilor au o memorie vizuala, precum spun si studiile stiintifice. Putem la
+                        dispozitie o serie de poze
+                        si de videoclipuri sugestive prin care oamenii sa memoreze cum ar trebui practicat toate
+                        operatiunile acelea pe manechine.
+                    </p>
+                    <p>
+                        Acest microserviciu are 2 arii, una de invatat lucruri basic despre gatit si una cu retete pe
+                        care
+                        le pot practica utilizatorii nostri. Cursurile noastre sunt predestinate persoanelor de toate
+                        afiliatile politice, toate religile,
+                        de toate varstele si sexele.
+
+                        La finalul acestui microserviciu regasim un mini-test care
+                        verifica toate deprinderile pe care le-a invatat utilizatorul pana ain momentul actual.
+
+                    </p>
+                </section>
+            </section>
+            <section id="pagina-profil">
+
+                <h3>
+                    <span>3.7</span> Pagina de profil
+                </h3>
+
+                <p>Aceasta este o pagina predestinata unui utilizator deja conectat pe website.
+                    Pagina avand un design unic si usor de inteles pentru orice utilizator nedepinzand
+                    de obisnuinta pe care o are.
+                </p>
+
+                <p>Pagina de profil este responsive si este alcatuita din doua subpagini. Prima subpagina, mai exact
+                    subpagina de
+                    informati vizeaza toate lucrurile importante pentru utilizator precum nume, email, descriere.
+                    In sectiunea de skill, utilizatorul poate opta sa mai adauge un skill la care vrea
+                    sa participe pe viitor. Nu exista o limita de skill-uri la care un utilizator poate sa participe.
+                    A doua subpagina care are o iconita sugestiva (in forma de trofeu ce desemneaza "achievements") ce
+                    viseaza informatiile legate de scorul pe care il poate obtine la testele
+                    de la finalul anumitor skill-uri, respectiv skill-urile lui favorite(acestea se vor calcula
+                    in functie de inima din pagina de home).
+                </p>
+                <figure typeof="sa:image">
+
+                    <img
+                        src="https://cdn.discordapp.com/attachments/810766925302595594/830583030325837864/unknown.png"
+                        alt="Aceasta imagine desemneaza partea de design a profilului" />
+                    <figcaption>Aceasta imagine desemneaza partea de design a profilului</figcaption>
+                </figure>
+                <p>Legat de interactiunea activa pe care o are website-ul cu clientul, utiliatorul poate
+                    apasa pe anumite butoane pentru a vedea anumite informati pe care doreste sa le stie.
+                    Sau eventual apasa acele butoane pentru a adauga sau elimina skill-uri, precum si apasarea
+                    unui buton pentru a-si schimba fotografia de profil.
+                </p>
+                <pre>
+                    <code>
+  const settingsBar = document.getElementById('settingsBar');
+  settingsBar.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (event.target.tagName === 'A') {
+      const lastActiveButton = document.getElementsByClassName('active')[0];
+      const currentActiveButton = event.target.parentNode;
+
+      lastActiveButton.classList.remove('active');
+      currentActiveButton.classList.add('active');
+
+      const settingsContainerElements = Array.from(document.getElementsByClassName('tab'));
+      if(event.target.innerText === "Info"){
+
+        settingsContainerElements.map(tab => {
+          if(tab.id === "infoTab"){
+            tab.classList.remove('hideTab');
+          } else {
+            tab.classList.add('hideTab')
+          }
+        })
+      }
+      else if(event.target.innerText === "🏆 Achievements"){
+        settingsContainerElements.map(tab => {
+          if(tab.id === "scoresTab"){
+            tab.classList.remove('hideTab');
+          } else {
+            tab.classList.add('hideTab')
+          }
+        })
+      }
+    }
+  });
+                    </code>
+                </pre>
+
+                <p>
+                    Pentru a schimba cele doua subpagini am folosit javascript.
+                    Ideea este ca noi pe tagul nav avem id-ul "settingsBar" , de care
+                    ne vom folosi. In primul rand luam o constanta si punem id de
+                    la settingsBar in ea, la acea variabila adaugam un listener(
+                    ce va fi reprezentat de un click). Daca intra pe bucla atunci
+                    luam doua constante noi, in una punem valoarea lui getElementsByClassName('active')[0]
+                    si in cealalta ii spunem parinte.
+                    Prima subpagina are pe
+                    tagul div, clasa tab care ne va ajuta in continuare. Daca
+                    apasam pe textul "Info" atunci se va deschide fereastra
+                    cu clasa tab , adica subpagina 1.
+                    Dar in cazul in care clasa de pe div va fi alta si vom apasa
+                    pe achivement atunci ne va sterge fereastra 1 si o va adauga
+                    pe a 2-a , adica cea cu informatiile legate de skill uri sau scor.
+                </p>
+
+            </section>
+
+            <section id="pagina-setari">
+
+                <h3>
+                    <span>3.8</span> Pagina de setari
+                </h3>
+                <p>Aceasta este o pagina predestinata unui utilizator deja conectat pe website ce
+                    doreste sa isi schimbe anumite date care vizeaza profilul sau(date persoanele)
+                    sau date legate de managerierea emailurilor(setari private).
+
+                </p>
+                <p>
+                    Pagina de setari este responsive si are un design usor de inteles, unde un utilizator
+                    isi poate da seama ca trebuie sa apese cele 2 iconite din dreptunghiul
+                    roz pentru a reusi sa schimbe subpaginile. Aceata pagina este alcatuita din 2 subpagini.
+                    Prima subpagina avand o iconita sugestiva ce reda informatiile persoane despre contul de utilizator
+                    si profil care pot fi modificare de utilizator. Aceste date modificabile sunt: numele, ziua de
+                    nastere,
+                    genul, emailul si parola. A doua subpagina reda setarile private legate de notificarile adresei
+                    de email a utilizatorului, acesta poate opta sa i se trimita mesaje de la website-ul nostru sau nu.
+
+                </p>
+
+                <p>
+                    Aceasta pagina are o interactiune vasta cu utilizatorul. Inafara faptului
+                    ca utilizatorul poate modifica datele cu ajutorul unui input si a unui buton de update
+                    avem si un logo in partea din dreapta a subpaginii 1 in care utilizatorul "se poate juca"
+                    dand hover pe el.
+                </p>
+
+            </section>
+
+            </section>
+        </section>
+</body>
+
+</html>
