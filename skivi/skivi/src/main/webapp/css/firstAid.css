@@ -1,0 +1,531 @@
+@font-face {
+    font-family: 'SoNormalRegular';
+    src: url('../resources/fonts/fonts/SONORM_.ttf'); 
+    font-weight: normal;
+    font-style: normal;
+  }
+    
+  html {
+      overflow: visible;
+      height: 100%;
+  }
+  
+  html, body {
+    height: auto;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    margin: 0;
+  } 
+    
+  .skillSubsectionLinkWrapper {
+    border-top: 2px dashed rgb(206, 142, 177);
+    border-bottom: 2px dashed rgb(206, 142, 177);
+  }
+  
+  .skillSubsectionLinkWrapper:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  aside a {
+    padding: 5% 30%;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    font-size: 2em;
+    display: block;
+  }
+  
+  main {
+      width: 100%;
+      height: 100%;
+      padding-top: 7em;
+  } 
+  
+  #skillSubsectionNavBar {
+    display: none;
+    flex-direction: row;
+    position: fixed;
+    z-index: 9999;
+    font-family: 'SoNormalRegular';
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    height: 2em;
+    padding: 0 20%;
+    z-index: 1;
+    /*background-image: url("../resources/images/texture5.png");*/
+    background-image: linear-gradient(#dcf0ea, #9cb99f);
+  }
+  
+  .skillSubsectionNavBarLinkWrapper {
+    width: 20%;
+  }
+  
+  .skillSubsectionNavBarLinkWrapper a {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: white;
+    border-left: 2px dashed rgb(206, 142, 177);
+    border-right: 2px dashed rgb(206, 142, 177);
+    height: 100%;
+  } 
+  
+  button {
+    font-family: 'SoNormalRegular';
+    cursor: pointer;
+  }
+  
+  input {
+    margin-top: 1em;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    font-family: 'SoNormalRegular';
+    font-weight: lighter;
+    cursor: url('../resources/images/cursor2.png'), auto;	
+  }
+  
+  .imageContainer span {
+    display: none;
+  }
+  
+  .imageContainer:hover {
+    flex-grow: 4.3;
+    transition: all 300ms ease-in-out;
+  }
+  
+  .imageContainer p {
+    position: absolute;
+    bottom: 0px;
+    padding-bottom: 15%;
+  }
+  
+  .sectionMenu {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 15%;
+    position: relative;
+  }
+  
+  #skillsDisplay {
+    box-sizing: border-box;
+    width: 60%;
+    height: 100%;
+    margin: auto;
+    background-image: url("../resources/images/bg15.png");
+    border-image: url("../resources/images/laceborderfull.png") 250 / 250px / 45px round;
+    position: relative;
+    font-family: 'SoNormalRegular';
+    padding-left: 2em;
+    padding-right: 2em;
+    bottom: 0px;
+    overflow: visible;
+    position: relative;
+  }
+  
+  .skillChooserHeader {
+    padding-top: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 5em;
+    color: #fffdfe;
+    text-shadow: 2px 2px #a07181;
+    position: relative;
+    margin-bottom: 1em;
+    text-align: center;
+    width: 100%; 
+    font-size: 50px;
+    font-size: 4em;
+  }
+  
+  #skillsDisplay hr {
+    border: 0 none;
+    border-top: 2px dashed #a07181;
+    position: relative;
+  }
+  
+  /*header button {
+    background-color: rgba(240, 190, 210, 0.5);
+    color: white;
+    text-shadow: 2px 2px #a07181;
+    border: 1px dashed #d67ab1;
+    padding: 12px 16px;
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 50px;
+    font-family: 'SoNormalRegular';
+    font-size: 20px;
+    height: 2.5em;
+    margin: auto;
+    margin-right: 1em;
+  }
+  
+  .authButtons {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 100%;
+  }
+  
+  .bowOverlay {
+    transform: rotate(-30deg) translate(-50%,-150%);
+    position: absolute;
+  }
+  
+  header button:hover {
+    transform: scale(110%, 110%);
+  }*/
+  
+  .skillContainerUpperBar {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1000;
+    width: 100%;
+    left: 0;
+    border-bottom: 1px solid green;
+  }
+  
+  .skillPreview {
+  width: 100%;
+  height: auto;
+  }
+  
+  .skill1PreviewImg {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+  }
+  
+  .tutorialContentBox {
+    position: relative;
+    box-sizing: border-box;
+    background-color: white;
+    width: 60%;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 10%;
+    box-shadow: 3px 5px #a07181;
+    padding: 2em 2em;
+  }
+  
+  .stepPresentationImage {
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  margin: auto;
+  display: block;
+  }
+  
+  .tutorialContentBox p {
+  font-size: 20px;
+  }
+  
+  .stepHeader {
+  font-size: 1.8em;
+  }
+  
+  .tutorialSubsectionTitle {
+  color: rgb(100, 145, 126);
+  top: 0;
+  position: absolute;
+  margin-top: 0;
+  left: 60%;
+  font-size: 45px;
+  transform: translate(0%, -80%);
+  } 
+  
+  .cardImage {
+    font-size: 5rem; 
+    position:absolute; 
+    top:-2.5rem; 
+    left:-1rem;
+  }
+  
+  .checkboxDiv {
+    display:inline-block; 
+  }
+  
+  .checkboxDiv input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  button[type="submit"] {
+    width: 10rem;
+    height: 2.5rem;
+  }
+  
+  .number {
+  color: rgb(156, 204, 185);
+  font-size: 90px;
+  position: absolute;
+  top: 0;
+  transform: translate(-100%, -40%);
+  text-shadow: 3px 3px rgb(85, 131, 112);
+  }
+  
+  .productsNeededShowcase {
+  position: relative;
+    background-color: transparent;
+    padding-top: 50px;
+    width: 80%;
+    margin: auto; 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  }
+  
+  .productNeeded {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 80%;
+  width: 100%;
+  max-width: 30%;
+  max-height: 30%;
+  }
+  
+  .productNeeded span {
+  position: relative;
+  color: rgb(114, 173, 149);
+  width: 4em;
+  height: 20%;
+  margin: auto;
+  display: block;
+  }
+  
+  .productNeeded img {
+  display: block;
+  height: 80%;
+  width: 90%;
+  flex-shrink: 1;
+  box-sizing: border-box;
+  position: relative;
+  border: 5px dashed rgb(206, 142, 177);
+  border-radius: 40%;
+  margin: 0 auto;
+  }
+  
+  .productsNeededShowcase h3 {
+  position: absolute;
+  transform: rotate(-90deg) translate(-50%, -200%);
+  color: rgb(100, 145, 126);
+  font-size: 2.5em;
+  }
+  
+  .productsNeededShowcase button {
+  display: block;
+  position: relative;
+  bottom: 0;
+  height: 20%;
+  width: 50%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgb(85, 131, 112);
+  color: rgb(85, 131, 112);
+  padding: 2px;
+  }
+  
+  .productsNeededShowcase button:hover {
+    transform: scale(110%, 110%);
+  }
+  
+  .finishedTutorial {
+    width: 30%;
+    height: 10em;
+    position: relative;
+    margin: auto;
+  }
+  
+  .finishedTutorial form {
+    height: 100%;
+  }
+  
+  .finishedTutorial form > * {
+    width: 60%;
+    margin: auto;
+    box-sizing: border-box;
+    display: block;
+  }
+  
+  .finishedTutorial button {
+    position: relative;
+    top: 30%;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    height: 3em;
+    width: 6em;
+  }
+  
+  .finishedTutorial button img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .testAnswer {
+    display: block;
+  }
+
+
+  #progressMadeModal {
+    display: none;
+  }
+
+  #doneButtonText {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    top: 0.1em;
+    width: 100%;
+    height: 100%;
+    font-size: 2em;
+    margin: auto;
+    color: white;
+    text-align: center;
+  }
+  
+  .modalWindow {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 4000;
+    top: 0;
+    font-family: 'SoNormalRegular';
+  }
+  
+  #modalWindow1 {
+    display: none;
+  }
+  
+  #skill1Modal {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50em;
+    width: 60em;
+    max-width: 100%;
+    max-height: 100%;
+    background-color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  .modalNavButtons {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+  }
+  
+  .closeModalButton {
+    height: 5em;
+    width: 5em;
+    background-color: transparent;
+    color: red;
+  }
+  
+  @media screen and (max-width: 800px) {
+  .tutorialContentBox {
+    width: 100%;
+  }
+  .productsNeededShowcase {
+    flex-direction: column;
+  }
+  .productNeeded {
+    flex-direction: row;
+    height: 80%;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .productNeeded img {
+    height: 80%;
+    width: 30%;
+  }
+  .productNeeded button {
+    height: 20%;
+    width: 20%;
+    margin-top: 2em;
+  }
+  .productNeeded span {
+    height: 20%;
+    width: 7em;
+    margin-top: 2em;
+  }
+  }
+  
+  @media screen and (min-width: 1000px) {
+  .tutorialContentBox {
+    padding: 4em 2em;
+  }
+  .stepHeader {
+    text-align: center;
+    font-size: 2.5em;
+  }
+  .productsNeededShowcase {
+    width: 60%;
+  }
+  h3 {
+    margin: 0;
+  }
+  }
+  
+  @media screen and (max-width: 1200px) {
+  aside {
+    transform: scale(60%, 60%) translate(-40%, -40%);
+  }
+  }
+  
+  @media screen and (max-width: 700px) { 
+  .tutorialSubsectionTitle {
+    transform: translate(-80%, 0);
+  }
+  #skillsDisplay {
+      width: 100%;
+  }
+  .skillChooserHeader {
+    font-size: 4em;
+  }
+  aside {
+    display: none;
+  }
+  #skillSubsectionNavBar {
+    display: flex;
+  }
+  }
+  
+  /*@media screen and (max-width: 512px) {
+  .tutorialContentBox p {
+    font-size: 1em;
+  }
+  header {
+    padding: 0px; 
+  }
+  header > * {
+    transform: scale(70%, 70%);
+    flex-direction: row;
+    display: block;
+    flex-shrink: 0;
+    height: 50%;
+    margin: auto;
+  }
+  }*/

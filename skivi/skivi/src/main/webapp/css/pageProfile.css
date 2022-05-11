@@ -1,0 +1,153 @@
+@font-face {
+  font-family: "SoNormalRegular";
+  src: url("../resources/fonts/fonts/SONORM_.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+  height: auto;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  margin: 0;
+  background-image: url("../resources/images/bg15.png");
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  padding-top: 7em;
+}
+
+.wrapper {
+  position: relative;
+  width: 40em;
+  display: flex;
+  margin: 10em auto;
+  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+}
+
+#settingsBar > * {
+  display: block;
+  text-decoration: none;
+  color: white;
+  border: 1px dashed white;
+  font-size: 1.3em;
+  width: 80%;
+  margin: 1em auto auto auto;
+}
+
+.profileNavigation {
+  width: 35%;
+  background-image: linear-gradient(to right, #e2a3c7, #e2a3c7);
+  padding: 30px 25px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  text-align: center;
+  color: #fff;
+}
+
+.profilePictureUploadSpace {
+  display: flex;
+  justify-content: space-between;
+}
+
+.skillAddingOption, .addSkillInput {
+  text-transform: capitalize;
+}
+
+.profileNavigation img {
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.profileNavigation span {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.profileNavigation p {
+  font-size: 12px;
+}
+
+.profileInfoTab {
+  width: 65%;
+  background: #fff;
+  padding: 30px 25px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.profileInfoTab .info,
+.profileInfoTab .projects {
+  margin-bottom: 25px;
+}
+
+.profileInfoTab .info h3,
+.profileInfoTab .projects h3 {
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e0e0e0;
+  color: #222630;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.profileInfoTab .userProfileData,
+.profileInfoTab .userSkillsProfileData {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profileInfoTab .userProfileData .data,
+.profileInfoTab .userSkillsProfileData .data {
+  width: 45%;
+}
+
+.profileInfoTab .userProfileData .data span,
+.profileInfoTab .userSkillsProfileData .data span {
+  color: #353c4e;
+  margin-bottom: 5px;
+}
+
+.profileInfoTab .userProfileData .data p,
+.profileInfoTab .userSkillsProfileData .data p {
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #919aa3;
+}
+.addButton {
+  border: 0;
+  color: #fff;
+  background: #d67ab1;
+  padding: 7px 15px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+.list,
+.list li {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+}
+
+.hideTab{
+  display: none;
+} 
+
+@media screen and (max-width: 600px) {
+   .wrapper {
+      flex-direction: column;
+      margin: auto 0;
+      width: 100vw;
+  }
+  .profileNavigation {
+    width: 100%;
+  }
+  .profileInfoTab {
+    width: 100%;
+  }
+}

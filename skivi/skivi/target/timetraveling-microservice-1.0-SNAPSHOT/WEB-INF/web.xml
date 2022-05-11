@@ -1,0 +1,106 @@
+<web-app
+        xmlns="https://jakarta.ee/xml/ns/jakartaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+        version="5.0"
+>
+    <servlet>
+        <servlet-name>GatewayServlet</servlet-name>
+        <servlet-class>com.timetraveling.gateway.RESTGateway</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GatewayServlet</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>helloServlet</servlet-name>
+        <servlet-class>com.timetraveling.timetraveling_microservice.HelloServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>helloServlet</servlet-name>
+        <url-pattern>/hello-servlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.timetraveling.timetraveling_microservice.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SignUpServlet</servlet-name>
+        <servlet-class>com.timetraveling.models.SignUpServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SignUpServlet</servlet-name>
+        <url-pattern>/sign-up</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HomepageServlet</servlet-name>
+        <servlet-class>com.timetraveling.controllers.HomepageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HomepageServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>com.timetraveling.controllers.ProfileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProfileServlet</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.timetraveling.controllers.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UsersServlet</servlet-name>
+        <servlet-class>com.timetraveling.models.UsersServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UsersServlet</servlet-name>
+        <url-pattern>/users</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RootServlet</servlet-name>
+        <servlet-class>com.timetraveling.models.RootServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RootServlet</servlet-name>
+        <url-pattern></url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TimetravelingServlet</servlet-name>
+        <servlet-class>com.timetraveling.controllers.TimetravelingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TimetravelingServlet</servlet-name>
+        <url-pattern>/timetraveling/*</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>NoCacheFilter</filter-name>
+        <filter-class>com.timetraveling.utils.filtering.NoCacheFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>NoCacheFilter</filter-name>
+        <url-pattern>/index.jsp</url-pattern>
+    </filter-mapping>
+</web-app>

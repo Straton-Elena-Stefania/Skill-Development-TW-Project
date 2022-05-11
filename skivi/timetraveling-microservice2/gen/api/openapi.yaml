@@ -1,0 +1,65 @@
+openapi: 3.0.3
+info:
+  description: Prin acest API care e RESTful, un administrator poate gestiona datele
+    despre cursurile ce tin de calatoritul in timp si acest API este disponibil pentru
+    aplicatia SkiVI, pentru a procura articolele si ale afisa utilizatorilor, dar
+    si pentru gestiunea lor.
+  title: API pentru utilizatori Timetraveling microservice
+  version: 1.0.0
+servers:
+- url: http://localhost:8081/timetraveling_microservice2_war_exploded
+security:
+- cookieAuth: []
+paths:
+  /sections:
+    get:
+      description: Intoarce lista cu toate sectiunile (stratul de sus al cursurilor).
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sections'
+          description: Am returnat cu succes toate sectiunile disponibile.
+        "403":
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator
+            sau nu este inregistrat la acest skill, lista tuturor sectiunilor nu este
+            disponibila.
+      tags:
+      - Sections
+      x-accepts: application/json
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Section'
+        required: true
+      responses:
+        "201":
+          description: Cererea de creare sectiune a fost efectuata cu succes
+      tags:
+      - Sections
+      x-contentType: application/json
+      x-accepts: application/json
+components:
+  schemas:
+    Section:
+      example:
+        name: name
+      properties:
+        name:
+          type: string
+      required:
+      - name
+      type: object
+    Sections:
+      items:
+        $ref: '#/components/schemas/Section'
+      type: array
+  securitySchemes:
+    cookieAuth:
+      in: header
+      name: Authorization
+      type: apiKey
+

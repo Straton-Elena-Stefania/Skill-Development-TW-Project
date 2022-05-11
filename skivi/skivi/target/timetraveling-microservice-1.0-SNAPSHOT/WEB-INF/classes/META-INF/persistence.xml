@@ -1,0 +1,21 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <!-- Define persistence unit -->
+    <persistence-unit name="persist" transaction-type="RESOURCE_LOCAL">
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+
+            <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform"/>
+            <!--pentru a face local baza de date, trebuie sa pui la value jdbc:postgresql://localhost:5432/skivi -->
+            <!--pentru a face local baza de date, trebuie sa pui la value jdbc:postgresql://app-db:5432/skivi -->
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/skivi" />
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
+            <property name="javax.persistence.jdbc.user" value="postgres" /> <!-- DB User -->
+            <property name="javax.persistence.jdbc.password" value="hannahmontana" /> <!-- DB Password -->
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+        </properties>
+    </persistence-unit>
+</persistence>

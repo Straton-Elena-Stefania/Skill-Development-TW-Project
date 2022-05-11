@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  first-aid-web:
+    build: .
+    ports:
+      - 8082:8080
+    links:
+      - first-aid-db
+
+
+  first-aid-db:
+    build: ./db
+    ports:
+      - 5434:5432
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/
+
+  timetraveling-db-data:
+    image: cogniteev/echo
+    command: echo 'Data Container for PostgreSQL'
+    volumes:
+      - /var/lib/postgresql/data
+
+networks:
+  default:
+    external:
+      name: skivi-net

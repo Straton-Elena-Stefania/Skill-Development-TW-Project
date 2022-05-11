@@ -1,0 +1,13 @@
+# Compiled source #
+###################
+*.class
+
+# Packages #
+############
+*.war
+
+# Virtual machine crash logs #
+hs_err_pid*
+
+# Other #
+*.env

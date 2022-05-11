@@ -1,0 +1,568 @@
+openapi: 3.0.3
+info:
+  version: 1.0.0
+  title: API pentru utilizatori First Aic microservice
+  description: Prin acest API care e RESTful, un administrator poate gestiona datele despre cursurile ce tin de primul ajutor si acest API este disponibil pentru aplicatia SkiVI, pentru a procura articolele si ale afisa utilizatorilor, dar si pentru gestiunea lor.
+servers:
+  - url: http://localhost:8082/first_aid_microservice2_war_exploded
+
+security:
+  - cookieAuth: [ ]
+
+paths:
+  /sections:
+    get:
+      tags:
+        - Sections
+      description: Intoarce lista cu toate sectiunile (stratul de sus al cursurilor).
+      responses:
+        '200':
+          description: Am returnat cu succes toate sectiunile disponibile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sections'
+
+        '403':
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator sau nu este inregistrat la acest skill, lista tuturor sectiunilor nu este disponibila.
+
+    post:
+      tags:
+        - Sections
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Section'
+      responses:
+        '201':
+          description: Cererea de creare sectiune a fost efectuata cu succes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Section'
+
+        '409':
+          description: Deja exista o sectiune cu acest nume in curs
+  /sections/{name}:
+    get:
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Numele sectiunii.
+          schema:
+            type: string
+      tags:
+        - Sections
+      description: Proprietatile unei sectiuni cu acel nume.
+      responses:
+        '200':
+          description: Am returnat cu succes sectiunea aceea.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Section'
+
+        '403':
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator sau nu este inregistrat la acest skill, lista tuturor sectiunilor nu este disponibila.
+        '404':
+          description: Nu am gasit o sectiune cu acest nume.
+
+    put:
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Numele sectiunii.
+          schema:
+            type: string
+      tags:
+        - Sections
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Section'
+      responses:
+        '201':
+          description: Sectiunea la acest id nu exista si am creat-o in functie de parametru si de corpul cererii
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Section'
+
+        '200':
+          description: Am actualizat sectiunea cu succes
+
+        '409':
+          description: Mai exista o sectiune cu acest nume iar crearea sau actualizarea sectiunii a esuat
+
+    delete:
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Numele sectiunii.
+          schema:
+            type: string
+        tags:
+          - Sections
+      responses:
+        '200':
+          description: Am sters cu succes sectiunea
+
+  /sections/{name}/subsections:
+    get:
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Numele sectiunii.
+          schema:
+            type: string
+      tags:
+        - Sections
+      description: Returneaza subsectiunile care se gasesc la o sectiune.
+      responses:
+        '200':
+          description: Am returnat cu succes subsectiunile de la sectiunea aceea.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subsections'
+
+        '403':
+          description: Daca clientul ce a depus cererea nu este inregistrat la cursul de care tine resursa sau nu are dreptul de administrator sau nu este inregistrat la acest skill, lista tuturor sectiunilor nu este disponibila.
+        '404':
+          description: Nu am gasit o sectiune cu acest nume.
+
+  /subsections:
+    get:
+      tags:
+        - Subsections
+      description: Intoarce lista cu toate subsectiunile indiferent de skill.
+      responses:
+        '200':
+          description: Am returnat cu succes toate subsectiunile disponibile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subsections'
+
+        '403':
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator sau nu este inregistrat la acest skill, lista tuturor sectiunilor nu este disponibila.
+
+    post:
+      tags:
+        - Subsections
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subsection'
+      responses:
+        '201':
+          description: Cererea de creare subsectiune a fost efectuata cu succes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subsection'
+
+        '409':
+          description: Mai exista o subsectiune cu acest nume pentru aceasta sectiune
+
+  /subsections/{id}:
+    put:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id-ul subsectiunii.
+          schema:
+            type: integer
+        tags:
+          - Subsections
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subsection'
+      responses:
+        '201':
+          description: Sectiunea la acest id nu exista si am creat-o in functie de parametru si de corpul cererii
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subsection'
+
+        '200':
+          description: Am actualizat subsectiunea cu succes
+
+        '409':
+          description: Mai exista o subsectiune cu acest nume pentru sectiunea de care apartine iar crearea sau actualizarea sectiunii a esuat
+
+    delete:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id-ul subsectiunii.
+          schema:
+            type: integer
+        tags:
+          - Subsections
+      responses:
+        '200':
+          description: Am sters cu succes subsectiunea
+
+  /steps:
+    get:
+      tags:
+        - Steps
+      description: Intoarce lista cu toti pasii. Un pas poate apartine unui singur curs.
+      responses:
+        '200':
+          description: Am returnat cu succes toti pasii.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Steps'
+
+        '403':
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator sau nu este inregistrat la acest skill, lista tuturor sectiunilor nu este disponibila.
+
+    post:
+      tags:
+        - Steps
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Step'
+      responses:
+        '201':
+          description: Cererea de creare pas a fost efectuata cu succes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Step'
+
+        '409':
+          description: Deja exista un pas cu acest nume in cadrul unei subsectiuni din curs
+
+  /steps/{id}:
+    get:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id-ul pasului.
+          schema:
+            type: integer
+      tags:
+        - Steps
+      description: Proprietatile unui pas cu acest id.
+      responses:
+        '200':
+          description: Am returnat cu succes pasul.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Step'
+
+        '403':
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator sau nu este inregistrat la acest skill, lista tuturor sectiunilor nu este disponibila.
+        '404':
+          description: Nu am gasit un pas cu acest id.
+
+    put:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id-ul pasului.
+          schema:
+            type: integer
+      tags:
+        - Steps
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Step'
+      responses:
+        '201':
+          description: Pasul la acest id nu exista si l-am creat in functie de parametru si de corpul cererii
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Step'
+
+        '200':
+          description: Am actualizat sectiunea cu succes
+
+        '409':
+          description: Mai exista un pas cu acest numar in cadrul aceleiasi subsectiuni (pagini) iar crearea sau actualizarea sectiunii a esuat
+
+    patch:
+      tags:
+        - Steps
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id pas.
+          schema:
+            type: integer
+      description: Corpul cererii va descrie operatiile pe care atributele unui pas le pot suferi individual la o modificare. Momentan permitem adaugara de resurse la un pas.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchBody'
+      responses:
+        '200':
+          description: Pasul a fost updatat partial cu succes (a fost adaugata resursa la pas)
+
+        '409':
+          description: La acest curs este deja asignata resursa, dupa id.
+
+        '403':
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator, datele nu sunt disponibile.
+
+        '400':
+          description: Corpul cererii nu a respectat continutul schemei descrise.
+
+        '404':
+          description: Nu am gasit pasul sau resursa pentru aceasta cerere.
+
+
+    delete:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id-ul pasului.
+          schema:
+            type: integer
+        tags:
+          - Steps
+      responses:
+        '200':
+          description: Am sters cu succes pasul.
+
+  /steps/{id}/resources:
+    get:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id-ul pasului.
+          schema:
+            type: integer
+      tags:
+        - Steps
+      description: Proprietatile unui pas cu acest id.
+      responses:
+        '200':
+          description: Am returnat cu succes pasul.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Step'
+
+        '403':
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator sau nu este inregistrat la acest skill, lista tuturor sectiunilor nu este disponibila.
+        '404':
+          description: Nu am gasit un pas cu acest id.
+
+  /resources:
+    get:
+      tags:
+        - Resources
+      description: Intoarce lista cu toate resursele. O resursa poate apartine mai multor pasi (many-to-many).
+      responses:
+        '200':
+          description: Am returnat cu succes toate resursele din curs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resources'
+
+        '403':
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator sau nu este inregistrat la acest skill, lista tuturor sectiunilor nu este disponibila.
+
+    post:
+      tags:
+        - Resources
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Resource'
+      responses:
+        '201':
+          description: Cererea de creare resursa a fost efectuata cu succes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '403':
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator cererea este respinsa.
+
+  /resources/{id}:
+    get:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id-ul resursei.
+          schema:
+            type: integer
+      tags:
+        - Resources
+      description: Proprietatile unei resurse cu acest id.
+      responses:
+        '200':
+          description: Am returnat cu succes resursa.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+
+        '403':
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator sau nu este inregistrat la acest skill, lista tuturor sectiunilor nu este disponibila.
+        '404':
+          description: Nu am gasit o resursa cu acest id.
+
+    delete:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id-ul resursei.
+          schema:
+            type: integer
+        tags:
+          - Resources
+      responses:
+        '200':
+          description: Am sters cu succes resursa.
+
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+
+  schemas:
+    Section:
+      type: object
+      description: O sectiune este nivelul cel mai de sus al unui curs, care necesita mai multe subsectiuni.
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: Numele sectiunii
+    Sections:
+      type: array
+      items:
+        $ref: '#/components/schemas/Section'
+    Subsection:
+      type: object
+      required:
+        - name
+        - sectionId
+      properties:
+        name:
+          type: string
+          description: Numele subsectiunii
+        sectionId:
+          type: integer
+          description: De care sectiune depinde aceasta subsectiune, determinata prin id.
+    Subsections:
+      type: array
+      items:
+        $ref: '#/components/schemas/Subsection'
+    Step:
+      type: object
+      required:
+        - subsectionID
+        - stepNumber
+        - contentTypeID
+        - contentDescription
+        - contentLink
+        - stepHeader
+        - stepDescription
+      properties:
+        subsectionID:
+          type: integer
+          description: ID-ul subsectiunii de care acest pas apartine. Un pas poarte apartine exclusiv unei subsectiuni.
+        stepNumber:
+          type: integer
+          description: Numarul pe pagina al pasului, pentru a determina ordinea in care trebuie realizat un tutorial. Este neaparat ca numarul sa fie unic pe o subsectiune
+        contentTypeID:
+          type: integer
+          description: Determinam ce fel de continut serveste un pas, in functie de id poate fi imagine sau video. Aceste tipuri pot fi extinse daca vrea cursul sa serveasca mai multe tipuri de continut.
+        contentDescription:
+          type: string
+          description: Acesta poate reprezenta un alt pentru continut daca este imagine
+        contentLink:
+          type: string
+          description: URL-ul pentru continutul servit de catre pas
+        stepHeader:
+          type: string
+          description: Un scurt headline pentru pas
+        stepDescription:
+          type: string
+          description: Descrierea procesului pentru indeplinirea pasului
+    Steps:
+      type: array
+      items:
+        $ref: '#/components/schemas/Steps'
+    Resource:
+      type: object
+      required:
+        - resourceLink
+        - resourceImageLink
+        - resourceDescription
+      properties:
+        resourceLink:
+          type: string
+          description: Link-ul de unde se poate cumpara resursa.
+        resourceDescription:
+          type: string
+          description: Acesta poate reprezenta un alt pentru continut daca este imagine
+        resourceImageLink:
+          type: string
+          description: URL-ul pentru imaginea de prezentare a resursei
+    Resources:
+      type: array
+      items:
+        $ref: '#/components/schemas/Resource'
+    PatchBody:
+      type: object
+      required:
+        - operation
+        - attribute
+        - value
+      properties:
+        operation:
+          description: Actiunea asupra atributului.
+          type: string
+        attribute:
+          description: Proprietatea entitatii care este de modificat.
+          type: string
+        value:
+          description: Un argument pentru operatia descrisa.

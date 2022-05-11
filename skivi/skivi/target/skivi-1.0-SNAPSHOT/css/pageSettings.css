@@ -1,0 +1,257 @@
+@font-face {
+  font-family: 'SoNormalRegular';
+  src: url('../resources/fonts/fonts/SONORM_.ttf'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: 'SoNormalRegular', sans-serif;
+}
+  
+html {
+    overflow: visible;
+    height: 100%;
+}
+
+html, body {
+  height: auto;
+  width: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    padding-top: 7em;
+    /*! bottom: 0px; */
+    /*! position: absolute; */
+}
+
+body {
+  background-image: url("../resources/images/bg15.png");
+  overflow-x: hidden;
+}
+
+.container {
+  background: #FFFFFF;
+  width: 600px;
+  margin: 10% auto;
+  position: relative;
+  box-shadow: 2px 5px 20px rgba(224, 81, 201, 0.5);
+}
+
+.logo {
+  float: right;
+  margin-right: 12px;
+  margin-top: 12px;
+  color:  #60435F;
+  font-weight: 900;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+}
+
+.rectangleToPlayWith {
+  width: 80px;
+  height: 40px;
+  right: -20px;
+  bottom: 0;
+  margin-bottom: 90px;
+  position: absolute;
+  z-index: 1;
+  background: #D67AB1;
+  font-size: 1em;
+  transform: rotate(-90deg);
+  transition: all .5s ease-in-out;
+  cursor: pointer;
+}
+
+.rectangleToPlayDecoration {
+    color:  #FFFFFF;
+    margin-top: 10px;
+    margin-left: 9px;
+  }
+
+.rectangleToPlayWith:hover {
+    background:  #60435F;
+    transform: scale(1.1);
+  }
+
+.leftbox {
+  float: left;
+  top: -5%;
+  left: -20%;
+  position: absolute;
+  width: 15%;
+  height: 110%;
+  background: #e2adcb;
+  box-shadow: 3px 3px 10px rgba(161, 4, 101, 0.5);
+  border: solid #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightbox {
+  width: 60%;
+  height: auto;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 2em 0;
+}
+
+nav a {
+  list-style: none;
+  padding: 35px;
+  color:  #fff;
+  font-size: 1.5em;
+  display: block;
+  transition: all .3s ease-in-out;
+}
+
+nav a:hover {
+    color:  #D67AB1;
+    cursor: pointer;
+    transform: scale(1.2);
+} 
+
+nav a:first-child {
+  margin-top: 7px;
+  color: #D67AB1;
+}
+
+nav a.active {
+  color:  #D67AB1;
+}
+
+.tabShow {
+  transition: all .5s ease-in;
+  width: 80%;
+}
+
+h1 {
+  color: #D67AB1;
+  font-size: 1.5em;
+  margin-top: 40px;
+  margin-bottom: 35px;
+}
+
+.labelTitle {
+  font-size: .8em;
+  color:#777;
+  display: block;
+  position: relative;
+  text-transform: uppercase;  
+  letter-spacing: 1px;
+  margin-left: 2px;
+  margin-top: 10px;
+}
+
+.label {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+input[type=text], input[type=email], input[type=password] {
+  border: 0;
+  position: relative;
+  border-bottom: 1px solid #D67AB1;
+  width: 100%;
+  font-size: .7em;
+  padding: 7px 0;
+  color:#070707;
+  outline: none;
+}
+
+input:invalid {
+  border-color: rgb(226, 132, 184);
+}
+
+input[type=text]:invalid, input[type=password]:invalid, input[type=email]:invalid {
+  outline: none;
+}
+
+.updateSettingsButton {
+  text-transform: uppercase;
+  border: 0;
+  color: #fff;
+  background: #D67AB1;
+  padding: 0.5em 1em;
+  font-size: 1.5em;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.passwordArea {
+  position: relative;
+}
+
+.tabShow {
+  display: none;
+} 
+
+.hideTab {
+  display: none;
+} 
+
+.hideButtonContent {
+  display: none;
+}
+
+.checkboxDiv {
+  display:inline-block; 
+}
+.error {
+  position: absolute;
+  width: 7em;
+  padding: 0;
+
+  font-size: 1em;
+  color: white;
+  background-color: rgba(153, 0, 94, 0.438);
+  border-radius: 1em 1em 1em 0;
+  right: 0;
+  top: 0.5em;
+  box-sizing: border-box;
+}
+
+.error.active {
+  padding: 0.2em;
+}
+
+.eye {
+  position: absolute;
+  display: block;
+  height: 2em;
+  width: 2em;
+  padding: 0;
+  right: 0.75em;
+  top: 0.25em;
+  background: transparent;
+  border: transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.eye img {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 750px) {
+  .leftbox {
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 10%;
+  }
+
+  .container {
+    width: 80vw;
+  }
+}
+

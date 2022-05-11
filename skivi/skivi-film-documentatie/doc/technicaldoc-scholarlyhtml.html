@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes">
+    <title>Scholarly HTML</title>
+    <link rel="stylesheet" href="../css/documentationstyle.css">
+</head>
+
+<body>
+    <header>
+        <div class="banner">
+            <h1>SkiVI Documentatie tehnica</h1>
+        </div>
+    </header>
+    <div role="contentinfo">
+
+        <section typeof="sa:ProjectLinks">
+            <ul>
+                <li typeof="schema:WebPage"
+                    resource="https://github.com/DamianTeodora/TWProiect-Skill-Development" property="schema:citation"
+                    id="github">
+                    <cite property="schema:name">
+                        <a href="https://github.com/DamianTeodora/TWProiect-Skill-Development">Github</a>
+                    </cite>
+                </li>
+            </ul>
+
+
+
+            <h2>Cuprins</h2>
+            <ol role="directory">
+                <li>
+                    <a href="#introducere">
+                        Privire de ansamblu a arhitecturii
+                    </a>
+                </li>
+                <li>
+                    <a href="#microservicii">
+                        Microservicii
+                    </a>
+
+                    <ol role="directory">
+
+                        <li>
+                            <a href="#comunicare">
+                                Metodele prin care comunicarea se realizeaza
+                            </a>
+
+                            <ol role="directory">
+                                <li>
+                                    <a href="#sincrona">
+                                        Sincrona
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#asincrona">
+                                        Asincrona
+                                    </a>
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <a href="#deployment">
+                                Deployment
+                            </a>
+                        </li>
+                    </ol>
+                </li>
+
+                <li>
+                    <a href="#integrare">
+                        Integrare
+                    </a>
+
+                    <ol role="directory">
+                        <li>
+                            <a href="#api-gateway">
+                                API Gateway
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#rest">
+                                Rest API
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#utilizator">
+                                Utilizator
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#fault">
+                                Fault Tolerance
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#security">
+                                Securitate
+                            </a>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="#ajax">
+                        AJAX
+                    </a>
+                </li>
+            </ol>
+        </section>
+
+        <section typeof="sa:AuthorsList">
+            <h2>Autori</h2>
+            <ul>
+                <li typeof="sa:ContributorRole" property="schema:author">
+                    <span typeof="schema:Person">
+                        <meta property="schema:givenName" content="Teodora">
+                        <meta property="schema:familyName" content="Damian">
+                        <span property="schema:name">Teodora Damian</span>
+                    </span>
+                    <ul>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            <a href="teodoradamian811@gmail.com" property="schema:email">teodoradamian811@gmail.com</a>
+                        </li>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            <a href="https://github.com/DamianTeodora"
+                                property="schema:github">https://github.com/DamianTeodora</a>
+                        </li>
+                    </ul>
+                </li>
+                <li typeof="sa:ContributorRole" property="schema:author">
+                    <span typeof="schema:Person">
+                        <meta property="schema:givenName" content="Elena">
+                        <meta property="schema:additionalName" content="Stefania">
+                        <meta property="schema:familyName" content="Straton">
+                        <span property="schema:name">Elena-Stefania Straton</span>
+                    </span>
+                    <ul>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            <a href="elena.straton23@gmail.com" property="schema:email">elena.straton23@gmail.com</a>
+                        </li>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            <a href="https://github.com/Straton-Elena-Stefania"
+                                property="schema:github">https://github.com/Straton-Elena-Stefania</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </section>
+    </div>
+    <section id="introduction" role="doc-introduction">
+        <h2>
+            <span>1.</span>
+            Privire de ansamblu a arhitecturii
+        </h2>
+        
+        <figure typeof="sa:image">
+            <img src="../resources/images/documentation/technical/general-arch.png">
+            <figcaption>Arhitectura de nivel inalt a aplicatiei</figcaption>
+        </figure>
+        
+        <p>
+            Aplicatia este construita in asa fel incat componentele sa impartaseasca cat mai putine
+            intre ele sau deloc, fiecare componenta avand propria baza de date, deci cu potentialul de
+            a alege sistemul de gestionare a bazei de date preferat de echipa care se ocupa de microserviciul
+            respectiv. 
+        </p>
+        <p>
+            Aplicatia este construita pe baza tehnologiei servlet si JSP, pe server Tomcat.
+        </p>
+        <p>
+            De asemenea, fiecare componenta implementeaza o arhitectura MVC.
+        </p>
+        <p>
+            Clientii acceseaza aplicatia prin browser sau facand cereri catre Rest API pe baza documentatiei
+            oferite.
+        </p>
+    </section>
+    <section id="microservicii">
+        <h2>
+            <span>2.</span>
+            Microservicii
+        </h2>
+
+        <figure typeof="sa:image">
+            <img src="../resources/images/documentation/technical/diagram-of-article.png">
+            <figcaption>O diagrama pentru un articol</figcaption>
+        </figure>
+
+        <p>
+            Pentru ca aplicatia este modulara si granulara, clientul va agrega obiectele ce compun articolele/tutorialele.
+        Componentele pot fi extinse usor, independent de alte parti. Articolele pot fi privite de la un nivel inalt pe
+        sectiuni, care au scopul sa prezinte cursul in maniera mai larga. O sectiune poate contine mai multe subsectiuni,
+        cu tutoriale inrudite unele cu celelalte.
+        </p>
+        <p>
+            Un articol este modelat deci orientat obiect si pus la dispozitie in cadrul microserviciilor de un Rest API.
+        </p>
+        <section id="comunicarea">
+            <h3>
+                <span>2.1</span>
+                Metodele prin care comunicarea se realizeaza
+            </h3>
+            <p>
+                Am experimentat mai multe metode de comunicare intre microservicii.
+            </p>
+            <section id="sincrona">
+                <h4>
+                    <span>2.1.1</span>
+                    Sincrona
+                </h4>
+                <p>
+                    O posibilitate este folosind HTTP si JSON via un Rest API. Astfel, aplicatia client
+                    face, intr-un mod abstractizat, cereri HTTP pentru resurse. Codurile de status ale microserviciilor
+                    sunt propagate catre client pentru a fi interpretate informativ pentru utilizator.
+                </p>
+            </section>
+            <section id="asincrona">
+                <h4>
+                    <span>2.1.2</span>
+                    Asincrona
+                </h4>
+                <p>
+                    In primul rand, cu ajutorul brokerului de mesaje RabbitMQ am realizat comunicare asincrona, bazata pe evenimente.
+                    Brokerul stie sa ruteze mesajele pe o coada pentru a fi mai departe consumate de catre cine este subscribed
+                    la acea coada. Un broker poate asigura decuplare intre microservicii. Acesta este folosit pentru a notifica 
+                    pe utilizatorii inregistrati la un skill de postarea unei noi resurse, ori pe browser ori pe email.
+
+                    Protocolul folosit de broker este AMQP, care este mai lightweight decat HTTP, dar nu este la fel
+                    de web-friendly.
+                </p>
+
+                <figure typeof="schema:SoftwareSourceCode">
+                    <pre>
+                            <code>
+                                channel.exchangeDeclare(EXCHANGE_NAME, "topic");
+
+                                for (String bindingKey: bindingKeys) {
+                                    channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, bindingKey);
+                                    System.out.println("RabbitMQ: Bound email subscriber to binding key: " + bindingKey);
+                                }
+                            </code>
+                        </pre>
+    
+                    <figcaption>Cod sursa pentru a face subscribe la o coada</figcaption>
+                </figure>
+
+                <figure typeof="sa:image">
+                    <img src="../resources/images/documentation/technical/messaging.png">
+                    <figcaption>Structura comunicarii cu message broker-ul</figcaption>
+                </figure>
+
+                <p>
+                    Comunicarea se mai poate face si asincron la nivel de browser prin apeluri AJAX.
+                </p>
+            </section>
+        </section>
+        <section id="deployment">
+            <h3>
+                <span>2.2</span>
+                Deployment
+            </h3>
+
+            <p>Intreaga aplicatie poate fi rulata in containere Docker, folosind docker-compose pentru a manevra
+                mai usor deployment-ul. Toate componentele aplicatiei comunica printr-un acelasi docker network,
+                permitand rezolvarea de nume.
+            </p>
+
+            <p>
+                Pentru a construi containerele, putem rula din radacina unui proiect:
+            </p>
+
+            <figure typeof="schema:SoftwareSourceCode">
+                <pre>
+                        <code>
+                            docker-compose build
+                        </code>
+                    </pre>
+
+                <figcaption>Constructia unor containere</figcaption>
+            </figure>
+
+            <p>
+                Aceasta comanda construieste mai multe containere deodata, precum cel al bazei de date
+                si cel de volum (care persista datele din baza de date intre mai multe rulari). De asemenea
+                ruleaza si containerul brokerului de mesaje din Gateway.
+            </p>
+
+            <p>
+                Pentru a construi brokerul de mesaje pentru deployment local:
+            </p>
+
+            <figure typeof="schema:SoftwareSourceCode">
+                <pre>
+                        <code>
+                            docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+                        </code>
+                    </pre>
+
+                <figcaption>Pentru deploy separat/local al brokerului</figcaption>
+            </figure>
+            
+        </section>
+    </section>
+    <section id="integrare">
+        <h2>
+            <span>3.</span>
+            Integrare
+        </h2>
+        <section id="api-gateway">
+            <h3>
+                <span>3.1</span>
+                API Gateway
+            </h3>
+
+            <p>
+                Componenta Gateway este cea care este expusa spre exteriori catre toti utilizatorii. Ea actioneaza ca
+                un agregator de resurse culese de catre microservicii. Ea ofera clientilor o interfata pentru a 
+                manipula, pe baza de Rest API-uri, datele din bazele de date ale microserviciilor.
+            </p>
+
+            <p>
+                Componenta actioneaza ca un punct central implementand autorizarea si autentificarea cererilor.
+                Aici, utilizatorii se pot inregistra sau loga. De asemenea, sunt autorizate cererile pentru 
+                a vedea ce permisiuni are persoana care a depus cererea.
+            </p>
+
+            <figure typeof="schema:SoftwareSourceCode">
+                <pre>
+                        <code>
+                            if (path.matches(ADMIN_AUTHORIZATION_PATH)) {
+                                String session = request.getHeader("Authorization");
+                                int userId = request.getIntHeader("userId");
+                    
+                                AuthorizationChecker authorizationChecker = new AuthorizationChecker();
+                                if (!authorizationChecker.checkForAdmin(session, userId)) {
+                                    response.sendError(HttpServletResponse.SC_FORBIDDEN);
+                                    return;
+                                }
+                    
+                                response.setStatus(HttpServletResponse.SC_OK);
+                            }
+                        </code>
+                    </pre>
+
+                <figcaption>Exemplu pentru verificare permisiuni</figcaption>
+            </figure>
+        </section>
+
+        <section id="rest">
+            <h3>
+                <span>3.2</span>
+                Rest API
+            </h3>
+
+            <p>
+                Compunerea articolelor si gestiunea utilizatorilor si a skill-urilor se face prin
+                API-uri Rest. Cum nu am folosit framework-uri, am imaginat un nou sistem Restful care 
+                seamana cu cel al "firewall-urilor".
+            </p>
+        </section>
+        <section id="utilizator">
+            <h3>
+                <span>
+                    3.3
+                </span>
+                Utilizator
+            </h3>
+            <p>
+                Utilizatorul se poate inscrie la mai multe skill-uri, si poate castiga achievements la acestea.
+            </p>
+
+            <figure typeof="sa:image">
+                <img src="../resources/images/documentation/technical/user-diagram.png">
+                <figcaption>Arhitectura utilizatorului</figcaption>
+            </figure>
+        </section>
+        <section id="fault">
+            <h3>
+                <span>
+                    3.5
+                </span>
+                Fault Tolerance
+            </h3>
+
+            <p>
+                Atunci cand un microserviciu nu este disponibil (dus spre revizuire, probleme in retea, din orice motiv), aplicatia merge mai
+                departe fara probleme. Accesul la cursuri este interzis iar utilizatorii sunt informati.
+            </p>
+        </section>
+        <section id="securitate">
+            <h3>
+                <span>
+                    3.6
+                </span>
+                Securitate
+            </h3>
+
+            <p>
+                Pentru hash-urile parolelor am folosit salt-uri pentru evitarea coliziunilor si algoritmul bcrypt.
+            </p>
+            <p>
+                Atacurile SQL injection sunt prevenite prin libraria de ORM Hibernate (folosind statement-uri preprocesate
+                named queries), iar atacurile XSS sunt prevenite facand escape al XML-ului la input-ul utilizatorilor.
+            </p>
+        </section>
+
+    </section>
+
+    <section id="ajax">
+        <h2>
+            <span>4.</span>
+            AJAX
+        </h2>
+
+        <p>
+            Am folosit AJAX pentru comunicare atat intra-aplicatie cat si intre microservicii. De exemplu, pentru
+            evaluarea raspunsurilor la un test:
+        </p>
+
+        <figure typeof="schema:SoftwareSourceCode">
+            <pre>
+                    <code>
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            let jsonResponse = JSON.parse(xhr.responseText);
+                            let achievement = jsonResponse.achievement;
+                            ...
+                    </code>
+                </pre>
+
+            <figcaption>Dupa ce am asteptat raspunsul de la cererea XHR</figcaption>
+        </figure>
+    </section>
+
+</body>
+
+</html>

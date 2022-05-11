@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  timetraveling-web:
+    build: .
+    ports:
+      - 8081:8080
+    links:
+      - timetraveling-db
+
+
+  timetraveling-db:
+    build: ./db
+    ports:
+      - 5433:5432
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/
+
+  timetraveling-db-data:
+    image: cogniteev/echo
+    command: echo 'Data Container for PostgreSQL'
+    volumes:
+      - /var/lib/postgresql/data
+
+networks:
+  default:
+    external:
+      name: skivi-net

@@ -1,0 +1,144 @@
+
+.modalWindow {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 4000;
+    top: 0;
+    font-family: 'SoNormalRegular';
+}
+
+#warningPopup {
+    position: fixed;
+    width: 30em;
+    height: 22em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+    background-color: #60435F;
+    display: flex;
+    border: 2px dashed white;
+  }
+  
+  #warningPopup form {
+    width: 100%;
+    position: relative;
+    font-size: 1.3em;
+    padding: 0 2em;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .warningMessage {
+    background-image: linear-gradient( to right,  rgb(116, 72, 96), rgb(180, 132, 159));
+    border: 2px dashed white;
+    border-radius: 20%;
+    text-align: center;
+    color: white;
+    padding: 0 2em;
+    box-sizing: border-box;
+    display: block;
+  }
+  
+  .skillModal {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50em;
+    width: 60em;
+    max-width: 100%;
+    max-height: 100%;
+    background-color: #fdf7fa; 
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  .modalNavButtons {
+    display: flex;
+    position: fixed;
+    width: auto;
+    height: auto;
+    bottom: 3em;
+    padding: 0 6em;
+  }
+  
+  #warningPopup form .modalNavButtons {
+    bottom: 0;
+    justify-content: space-around;
+    padding: 0;
+    position: relative;
+  }
+  
+  .confirmRemovalButton {
+    font-size: 0.75em;
+    background-color: rgb(207, 119, 172);
+    color: white;
+    border: 2px dashed white;
+    border-radius: 20%;
+    padding: 0.4em 1em;
+  }
+  
+  .cancelRemovalButton {
+    font-size: 0.75em;
+    background-color: rgb(180, 155, 170);
+    color: white;
+    border: 2px dashed white;
+    border-radius: 20%;
+    padding: 0.4em 1em;
+  }
+  
+  .closeModalButton {
+    height: 2em;
+    width: 4em;
+    background-color: rgb(233, 231, 232);
+    box-shadow: 0 0 0 1px rgb(182, 182, 182);
+    border: none;
+    box-sizing: border-box;
+    font-size: 2em;
+    color: white;
+    margin-right: 3em;
+  }
+
+  /*
+  Aceste reguli descriu faptul ca fereastra modala
+  isi aseaza poza in partea de sus a ecranului, astfel
+  ca sa nu fure din latimea content-ului
+*/
+@media screen and (max-width: 700px) {
+  .skillModal {
+    flex-direction: column;
+  }
+  .previewMotif {
+    width: auto;
+    height: 20%;
+  }
+  .previewMotif img {
+    height: auto;
+  }
+  .skillDescription {
+    height: 80%;
+    width: 100%;
+  }
+  .skillDescriptionHeader h1 {
+    font-size: 3em;
+  }
+  .yearLabel {
+    display: block;
+  }
+  .modalNavButtons {
+    padding: 0;
+    position: relative;
+  }
+  .skillDescription {
+    overflow: visible;
+  }
+}

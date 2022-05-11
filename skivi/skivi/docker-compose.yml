@@ -1,0 +1,43 @@
+version: "3.9"
+services:
+  rabbit-mq:
+    container_name: "rabbit-mq"
+    image: rabbitmq:3-management
+    hostname: "rabbit-mq"
+    ports:
+      # The standard AMQP protocol port
+      - '5672:5672'
+      # HTTP management UI
+      - '15672:15672'
+    environment:
+      # The location of the RabbitMQ server.  "amqp" is the protocol;
+      # "rabbitmq" is the hostname.  Note that there is not a guarantee
+      # that the server will start first!  Telling the pika client library
+      # to try multiple times gets around this ordering issue.
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+
+  app-web:
+    build: .
+    ports:
+      - 8080:8080
+    links:
+      - app-db
+
+  app-db:
+    build: ./db
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/
+
+  app-db-data:
+    image: cogniteev/echo
+    command: echo 'Data Container for PostgreSQL'
+    volumes:
+      - /var/lib/postgresql/data
+
+networks:
+  default:
+    external:
+      name: skivi-net

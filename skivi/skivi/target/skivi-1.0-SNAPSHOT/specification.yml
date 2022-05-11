@@ -1,0 +1,375 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: API pentru utilizatori SkiVI
+  description: Prin acest API care e RESTful, un administrator sau un utilizator logat poate obtine si gestiona datele personale si ale cursurilor disponibile.
+servers:
+  - url: http://localhost:8088/skivi_war_exploded
+
+security:
+  - cookieAuth: [ ]
+
+paths:
+  /login:
+    get:
+      tags:
+        - Users
+      description: Seteaza headerele cu token-ul si id-ul utilizatorului corespunzator credentialelor oferite in header
+      parameters:
+        - in: header
+          name: email
+          schema:
+            type: string
+        - in: header
+          name: password
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Am setat headerele cu API Key-ul corespunzator si user Id-ul, pentru a fi folosite mai departe
+
+        '403':
+          description: Credentialele nu sunt valide
+
+  /users:
+    get:
+      tags:
+        - Users
+      description: Intoarce lista cu numele si descrierea tuturor utilizatorilor
+      responses:
+        '200':
+          description: Am returnat cu succes toti utilizatorii din aplicatie
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+
+        '403':
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator, lista utilizatorilor nu este disponibila
+
+    post:
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: Cererea de creare utilizator a fost efectuata cu succes
+
+
+  /users/{id}:
+    get:
+      tags:
+        - Users
+      description: Intoarce numele si descrierea utilizatorului de la un id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id utilizator.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Am returnat cu succes acel utilizator
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+        '403':
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator, sau nu este insusi utilizatorul cerut, datele nu sunt disponibile
+
+        '404':
+          description: Daca nu exista un client cu acest id
+
+    put:
+      tags:
+        - Users
+      description: O suprascriere totala a utilizatorului aflat la acel id folosindu-se de ceea ce este in corpul cererii (un User in JSON)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id utilizator.
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: A fost suprascris utilizatorul cu succes.
+
+        '201':
+          description: Am creat un utilizator la id-ul din url cu prop. din body
+
+    patch:
+      tags:
+        - Users
+      description: Actualizeaza user-ul aflat la acel id partial conform a ceea ce este descris in corpul cererii in format JSON.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id utilizator.
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchBody'
+      responses:
+        '200':
+          description: A fost actualizat partial userul cu succes.
+
+    delete:
+      tags:
+        - Users
+      description: Sterge user-ul aflat la acel id.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id utilizator.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Utilizatorul a fost sters cu succes.
+
+        '404':
+          description: Nu am gasit utilizatorul la acest id.
+
+  /users/{id}/skills:
+    get:
+      tags:
+        - Skills
+      description: Intoarce datele despre cursurile la care utilizatorul descris de id
+        s-a inscris
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id utilizator.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Am returnat cu succes datele despre prezentarea acelor cursuri
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Skills'
+
+        '403':
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator, sau nu este insusi utilizatorul cerut, datele nu sunt disponibile
+
+        '404':
+          description: Daca nu exista un client cu acest id
+
+  /skills:
+    get:
+      tags:
+        - Skills
+      description: Intoarce datele despre toate cursurile pe care le cunoaste aplicatia
+      responses:
+        '200':
+          description: Am returnat cu succes datele despre prezentarea acelor cursuri
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Skills'
+
+        '403':
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator, datele nu sunt disponibile
+
+    post:
+      tags:
+        - Skills
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id curs.
+          schema:
+            type: integer
+      description: Creeaza un nou skill dupa proprietatile specificate in corpul cererii.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Skill'
+      responses:
+        '201':
+          description: Am returnat cu succes datele despre prezentarea acelor cursuri
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Skill'
+
+        '403':
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator, datele nu sunt disponibile
+
+
+  /skills/{id}:
+    put:
+      tags:
+        - Skills
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id curs.
+          schema:
+            type: integer
+      description: Inlocuieste continutul prezentarii skill-ului de la id-ul precizat cu ceea ce se afla in corpul cererii
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Skill'
+      responses:
+        '200':
+          description: Cursul a fost updatat cu succes
+
+        '201':
+          description: Cursul cu id-ul respectiv nu exista si a fost creat cu ce era in corpul cererii
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Skill'
+        '403':
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator, datele nu sunt disponibile.
+
+        '404':
+          description: Nu am gasit un curs cu acest id.
+
+    delete:
+      tags:
+        - Skills
+      description: Sterge cursul aflat la acel id.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id curs.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Cursul a fost sters cu succes.
+
+        '404':
+          description: Nu am gasit cursul la acest id.
+
+    patch:
+      tags:
+        - Skills
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id curs.
+          schema:
+            type: integer
+      description: Corpul cererii va descrie operatiile pe care atributele unui curs le pot suferi individual la o modificare. Momentan permitem adaugarea de utilizatori la un skill.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchBody'
+      responses:
+        '200':
+          description: Cursul a fost updatat partial cu succes (a fost adaugat un utilizator la curs)
+
+        '409':
+          description: La acest curs este deja inregistrat utilizatorul.
+
+        '403':
+          description: Daca clientul ce a depus cererea nu are dreptul de administrator, datele nu sunt disponibile.
+
+        '400':
+          description: Corpul cererii nu a respectat continutul schemei descrise.
+
+        '404':
+          description: Nu am gasit utilizatorul sau cursul pentru aceasta cerere.
+
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+
+  schemas:
+    User:
+      type: object
+      required:
+        - username
+        - email
+        - password
+      properties:
+        username:
+          description: Acest parametru trebuie sa fie unic in aplicatie. Si mai avea cateva constrangeri de lungime deci sa fie moderat de lung si sa aiba doar caractere alfanumerice.
+          type: string
+        description:
+          type: string
+    Users:
+      type: array
+      items:
+        $ref: '#/components/schemas/User'
+    Skills:
+      type: array
+      items:
+        $ref: '#/components/schemas/Skill'
+    Skill:
+      type: object
+      required:
+        - name
+        - description
+        - url
+        - sideimageLink
+        - imagePresentationLink
+      properties:
+        name:
+          description: Acest parametru trebuie sa fie unic in aplicatie. Si mai avea cateva constrangeri de lungime deci sa fie moderat de lung si sa aiba doar caractere alfanumerice.
+          type: string
+        description:
+          type: string
+        url:
+          description: Domeniul de la care luam skill-ul respectiv.
+          type: string
+        sideimageLink:
+          description: Imaginea care apare in partea stanga atunci cand utilizatorul deschide fereastra de aflat mai mult de pe homepage
+          type: string
+        imagePresentationLink:
+          description: Imaginea de pe homepage a skill-ului care apare daca te-ai inregistrat la el
+          type: string
+    PatchBody:
+      type: object
+      required:
+        - operation
+        - attribute
+        - value
+      properties:
+        operation:
+          description: Actiunea asupra atributului.
+          type: string
+        attribute:
+          description: Proprietatea obiectului care este de modificat.
+          type: string
+        value:
+          description: Un argument pentru operatia descrisa.

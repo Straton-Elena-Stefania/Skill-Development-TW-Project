@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  cooking-web:
+    build: .
+    ports:
+      - 8083:8080
+    links:
+      - cooking-db
+
+
+  cooking-db:
+    build: ./db
+    ports:
+      - 5435:5432
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/
+
+  cooking-db-data:
+    image: cogniteev/echo
+    command: echo 'Data Container for PostgreSQL'
+    volumes:
+      - /var/lib/postgresql/data
+
+networks:
+  default:
+    external:
+      name: skivi-net
